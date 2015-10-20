@@ -7,12 +7,12 @@ import java.io.*;
 public class Transaction {
 	private String date;//	in format: MM/DD/YYYY
 	private String acctNo="",type="";
-	private double chargeAmt=0.0;
+	private float chargeAmt=0;
 	public Transaction(){
 
 	
 	}
-	public Transaction(String acctNo, Double chargeAmt, String type,String date){
+	public Transaction(String acctNo, Float chargeAmt, String type,String date){
 		this.acctNo=acctNo;
 		this.chargeAmt=chargeAmt;
 		this.type=type;
@@ -32,10 +32,10 @@ public class Transaction {
 		
 	}
 	
-	public double getChargeAmt() {
+	public float getChargeAmt() {
 		return chargeAmt;
 	}
-	public void setChargeAmt(double chargeAmt) {
+	public void setChargeAmt(float chargeAmt) {
 		this.chargeAmt = chargeAmt;
 	}
 	public String getDate() {

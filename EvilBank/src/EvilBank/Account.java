@@ -3,10 +3,11 @@ import java.util.ArrayList;
 public class Account {
 private String acctNo;
 private String acctName;
-private double acctBalance, chargeBalance;
+private double chargeBalance;
+private float acctBalance; 
 private double fee=35.0;
 
-	public Account(String acctNo,String acctName,Double acctBalance){
+	public Account(String acctNo,String acctName,float acctBalance){
 		this.setAcctNo(acctNo);
 		this.setAcctName(acctName);
 		this.setAcctBalance(acctBalance);
@@ -32,10 +33,10 @@ private double fee=35.0;
 	public void setAcctName(String acctName) {
 		this.acctName = acctName;
 	}
-	public double getAcctBalance() {
+	public float getAcctBalance() {
 		return acctBalance;
 	}
-	public void setAcctBalance(double acctBalance) {
+	public void setAcctBalance(float acctBalance) {
 		this.acctBalance = acctBalance;
 	}
 	public double getChargeBalance() {
@@ -59,7 +60,7 @@ private double fee=35.0;
 			acctBalance-=trans.getChargeAmt();
 			if (acctBalance<0.0){
 				chargeBalance+=fee;
-//				acctBalance-=fee;
+				acctBalance-=fee;
 			}
 			
 		}break;
@@ -67,7 +68,7 @@ private double fee=35.0;
 			acctBalance-=trans.getChargeAmt();
 			if (acctBalance<0.0){
 				chargeBalance+=fee;
-//				acctBalance-=fee;
+				acctBalance-=fee;
 			}
 			
 		}break;

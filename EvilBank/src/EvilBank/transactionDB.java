@@ -11,10 +11,11 @@ import java.util.Properties;
  * Make sure you have Oracle JDBC thin driver in your classpath before running this program
  * @author
  */
-public class OracleJdbcExample {
+public class transactionDB {
 
-    public static void main(String args[]) throws SQLException {
-        //URL of Oracle database server
+   
+        public static void sendToDatabase(String a, Float b, String c,String d,Integer i){
+    	//URL of Oracle database server
         String url = "jdbc:oracle:thin:system/password@localhost"; 
       
         //properties for creating connection to Oracle database
@@ -23,26 +24,37 @@ public class OracleJdbcExample {
         props.setProperty("password", "password");
       
         //creating connection to Oracle database using JDBC
-        Connection conn = DriverManager.getConnection(url,props);
-
-        String sql ="insert into Account VALUES('110909', 'roshan', 'rajasekharan',1111,1000)";
-
-        //creating PreparedStatement object to execute query
-        PreparedStatement preStatement = conn.prepareStatement(sql);
-    
-        ResultSet result = preStatement.executeQuery();
+        Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(url,props);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		PreparedStatement preStatement1 = null;
         
-        String sql1 ="insert into Transaction VALUES('1234', 10, 'Check',DATE '2008-11-11',1)";
+        String sql1 ="insert into Transaction VALUES('"+a+"', "+b+", '"+c+"',DATE '"+d+"',"+i+")";
 
         //creating PreparedStatement object to execute query
-        PreparedStatement preStatement1 = conn.prepareStatement(sql1);
+        try {
+			 preStatement1 = conn.prepareStatement(sql1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     
-        ResultSet result1 = preStatement.executeQuery();
+        try {
+			ResultSet result1 = preStatement1.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
       
 //        while(result.next()){
 //            System.out.println("Current Date from Oracle : " +         result.getString("account_no"));
 //        }
         System.out.println("done");
+        }
       
-    }
+    
 }
