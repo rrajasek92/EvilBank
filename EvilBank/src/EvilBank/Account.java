@@ -59,7 +59,7 @@ private double fee=35.0;
 			acctBalance-=trans.getChargeAmt();
 			if (acctBalance<0.0){
 				chargeBalance+=fee;
-				acctBalance-=fee;
+//				acctBalance-=fee;
 			}
 			
 		}break;
@@ -67,7 +67,7 @@ private double fee=35.0;
 			acctBalance-=trans.getChargeAmt();
 			if (acctBalance<0.0){
 				chargeBalance+=fee;
-				acctBalance-=fee;
+//				acctBalance-=fee;
 			}
 			
 		}break;

@@ -75,11 +75,13 @@ public class EvilBankApp {
 				System.out.println("Enter the date of the check (MM/DD/YYYY): ");
 				ldate=keyboard.next();
 				Transaction trans=new Transaction(laccount,lamount,ltype,ldate);
-				transHistory.add(trans);
-				trans.writeToFile(laccount);
+				transHistory.add(trans); // grand transaction history, not even in date order
+				trans.writeToFile(laccount); // transaction for individual account, not in date order 
 				theAcct.processTrans(trans);
 				}
 				}
+			// sort transHistory by time  -- grand transaction history
+			// group time ordered transaction by account number 
 			displayTrans();
 			for (Account anAcct : EvilBankApp.acctList) {
 				System.out.println("The balance for account "+anAcct.getAcctNo()+" is "+anAcct.getAcctBalance());
